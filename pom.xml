@@ -8,7 +8,7 @@
     <modules>
         <module>server</module>
         <module>web</module>
-    </modules>
+    </modules>á
 
     <groupId>za.co.momagano</groupId>
     <artifactId>dummy-app</artifactId>
