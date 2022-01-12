@@ -24,7 +24,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.modjadji</groupId>
+            <groupId>za.co.momagano</groupId>
             <artifactId>web</artifactId>
             <version>${project.version}</version>
             <scope>runtime</scope>
