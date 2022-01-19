@@ -41,4 +41,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/momagano/dummy-spring-boot:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/momagano/dummy-spring-boot
