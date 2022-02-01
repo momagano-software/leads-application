@@ -26,4 +26,4 @@ run mvn clean install
 
 # run ./mvnw spring-boot:run
 # run mvn spring-boot:run -f server/pom.xml
-CMD ["mvn", "-fserver/pom.xml", "spring-boot:run"]
+# CMD ["mvn", "-fserver/pom.xml", "spring-boot:run"]
