@@ -49,5 +49,8 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "momagano-test" #Must be unique in Heroku
           heroku_email: "info@momagano.co.za"
+      -
+        name: Run acceptance tests
+        run: curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/bakwanyana/angular-springboot-acceptance-tests/dispatches --data '{"event_type": "post_heroku_deploy"}'
 
   
