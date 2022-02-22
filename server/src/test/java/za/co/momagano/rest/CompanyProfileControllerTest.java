@@ -15,9 +15,9 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = RegistrationController.class)
+@WebMvcTest(controllers = CompanyProfileController.class)
 @AutoConfigureMockMvc
-public class RegistrationControllerTest {
+public class CompanyProfileControllerTest {
     @Autowired
     MockMvc mockMvc;
     @MockBean

@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RegistrationController {
+public class CompanyProfileController {
     private CompanyProfileService companyProfileService;
 
-    public RegistrationController(CompanyProfileService companyProfileService) {
+    public CompanyProfileController(CompanyProfileService companyProfileService) {
         this.companyProfileService = companyProfileService;
     }
 
