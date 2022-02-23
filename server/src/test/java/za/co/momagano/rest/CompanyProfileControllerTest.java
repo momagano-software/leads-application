@@ -25,8 +25,8 @@ public class CompanyProfileControllerTest {
 
     @Test
     public void shouldRegisterANewUserProfile() throws Exception {
-        CompanyProfile profile = new CompanyProfile();
-        profile.setTradingName("Dillinger Co");
+        CompanyProfile profile = new CompanyProfile("1990/05/904329","A company");
+
 
         when(companyProfileService.addProfile(any(CompanyProfile.class))).thenReturn(profile);
         mockMvc.perform(post("/profile")

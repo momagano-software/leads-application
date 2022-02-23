@@ -17,7 +17,7 @@ public class CompanyProfileServiceTest {
 
     @Test
     void shouldCreateProfile(){
-        companyProfileService.addProfile(new CompanyProfile());
+        companyProfileService.addProfile(new CompanyProfile("1990/05/904329","A company"));
 
         verify(companyProfileRepository, times(1)).save(any(CompanyProfile.class));
     }
