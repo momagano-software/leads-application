@@ -15,4 +15,8 @@ public class CompanyProfileService {
     public CompanyProfile addProfile(CompanyProfile companyProfile) {
         return companyProfileRepository.save(companyProfile);
     }
+
+    public CompanyProfile getProfile(String companyRegistration) {
+        return companyProfileRepository.findById(companyRegistration).get();
+    }
 }

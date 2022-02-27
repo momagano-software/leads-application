@@ -2,9 +2,7 @@ package za.co.momagano.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CompanyProfileController {
@@ -16,7 +14,11 @@ public class CompanyProfileController {
 
     @PostMapping("/profile")
     ResponseEntity createProfile(@RequestBody CompanyProfile profile){
-        CompanyProfile registeredProfile = companyProfileService.addProfile(profile);
-        return new ResponseEntity(1l, HttpStatus.CREATED);
+        companyProfileService.addProfile(profile);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+    @GetMapping("/profile")
+    ResponseEntity<CompanyProfile> getProfile(@RequestParam("companyRegistration") String companyRegistration){
+        return ResponseEntity.ok(companyProfileService.getProfile(companyRegistration));
     }
 }
