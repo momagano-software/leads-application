@@ -13,11 +13,5 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-       this.homeControllerService.getSomething().subscribe( res => {
-        console.log(res);
-       }, e => {
-        console.table(e);
-       });
-     }
+  ngOnInit() {}
 }

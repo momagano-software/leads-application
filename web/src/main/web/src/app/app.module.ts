@@ -4,6 +4,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CompanyRegistrationComponent } from './company-registration/company-registration.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 
@@ -11,6 +12,7 @@ import { CompanyRegistrationComponent } from './company-registration/company-reg
   declarations: [
     AppComponent,
     CompanyRegistrationComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
