@@ -3,11 +3,24 @@ package za.co.momagano.rest;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 public class CompanyProfile implements Serializable {
     @Id
     private String companyRegistration;
     private String tradingName;
+    private  String name;
+    private  String email;
+    private  String contact;
+    private  String experience;
+//    private  List<WorkingHours> workingHours;
+    private  String location;
+    private  String portfolio;
+//    private  List<Social> socials;
+    private  String about;
+
+
 
 
     public CompanyProfile() {
@@ -29,5 +42,80 @@ public class CompanyProfile implements Serializable {
 
     public String getCompanyRegistration() {
         return companyRegistration;
+    }
+
+    public void setCompanyRegistration(String companyRegistration) {
+        this.companyRegistration = companyRegistration;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(String portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    @Override
+    public String toString() {
+        return "CompanyProfile{" +
+                "companyRegistration='" + companyRegistration + '\'' +
+                ", tradingName='" + tradingName + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", contact='" + contact + '\'' +
+                ", experience='" + experience + '\'' +
+                ", location='" + location + '\'' +
+                ", portfolio='" + portfolio + '\'' +
+                ", about='" + about + '\'' +
+                '}';
     }
 }
