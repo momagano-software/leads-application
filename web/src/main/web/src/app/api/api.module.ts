@@ -2,7 +2,11 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration';
-import { HomeControllerService } from './services/home-controller.service'
+
+import { HomeControllerService } from './services/home-controller.service';
+import { CompanyProfileControllerService } from './services/company-profile-controller.service';
+import { SomethingControllerService } from './services/something-controller.service';
+
 /**
  * Provider for all Api services, plus ApiConfiguration
  */
@@ -16,7 +20,9 @@ import { HomeControllerService } from './services/home-controller.service'
   declarations: [],
   providers: [
     ApiConfiguration,
-    HomeControllerService
+    HomeControllerService,
+    CompanyProfileControllerService,
+    SomethingControllerService
   ],
 })
 export class ApiModule {
