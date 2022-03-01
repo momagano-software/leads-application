@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyProfileControllerService } from '../api/services';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-company-registration',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyRegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private companyRegistrationService: CompanyProfileControllerService,
+    private formBuilder: FormBuilder) { }
+
+    registrationForm = this.formBuilder.group({
+    name: [''],
+    tradingName: [''],
+    companyRegistration: [''],
+    email: [''],
+    contact: [''],
+    experience: [''],
+    location: [''],
+    portfolio: [''],
+    about: ['']
+  })
 
   ngOnInit() {
+  }
+
+  submit() {
+    this.companyRegistrationService.createProfileUsingPOST(this.registrationForm.value).subscribe(() => {
+      console.log('subimtted');
+    });
   }
 
 }

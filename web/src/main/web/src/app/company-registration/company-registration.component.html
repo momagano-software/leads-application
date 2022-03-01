@@ -1,12 +1,18 @@
-<label for="name">Name</label><input id="name" type="text">
-<label for="trading-name">Trading Name</label><input id="trading-name" type="text">
-<label for="company-registration">Company Registration</label><input id="company-registration" type="text">
-<label for="email">Email</label><input id="email" type="text">
-<label for="contact">Contact</label><input id="contact" type="text">
-<label for="experience">Experience</label><input id="experience" type="text">
-<label for="location">Location</label><input id="location" type="text">
-<label for="portfolio">Portfolio</label><input id="portfolio" type="text">
-<label for="about">About</label><input id="about" type="text">
+<form [formGroup]="registrationForm" id="registration" (ngSubmit)="submit()">
+
+<label for="name">Name</label><input id="name" formControlName="name" type="text">
+<label for="trading-name">Trading Name</label><input id="trading-name" formControlName="tradingName" type="text">
+<label for="company-registration">Company Registration</label><input id="company-registration" formControlName="companyRegistration" type="text">
+<label for="email">Email</label><input id="email" formControlName="email" type="text">
+<label for="contact">Contact</label><input id="contact" formControlName="contact" type="text">
+<label for="experience">Experience</label><input id="experience" formControlName="experience" type="text">
+<label for="location">Location</label><input id="location" formControlName="location" type="text">
+<label for="portfolio">Portfolio</label><input id="portfolio" formControlName="portfolio" type="text">
+<label for="about">About</label><input id="about" formControlName="about" type="text">
+
+<button id="submit" type="submit">Submit</button>
+</form>
+
 <!-- |Name          |Trading Name|Company Reg   |Email            |Contact   |Experience|Working hours|Location|Portfolio|Socials                                     |About                    |
 |John Dillinger|Dilling Co  |1996/394028/01|john@dillinger.co|0782356891|10 years  |08:00 - 16:00|Cresta  |Plumbing |Twitter: @dillingerco,Instagram:@dillingerco|We are a plumbing company|
 And he registers -->
