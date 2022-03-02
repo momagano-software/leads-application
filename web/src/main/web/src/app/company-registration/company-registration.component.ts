@@ -12,16 +12,28 @@ export class CompanyRegistrationComponent implements OnInit {
   constructor(private companyRegistrationService: CompanyProfileControllerService,
     private formBuilder: FormBuilder) { }
 
-    registrationForm = this.formBuilder.group({
-    name: [''],
-    tradingName: [''],
-    companyRegistration: [''],
-    email: [''],
-    contact: [''],
-    experience: [''],
-    location: [''],
-    portfolio: [''],
-    about: ['']
+    validationMessages = {
+    name: 'Name is required',
+    tradingName: 'Trading name is required',
+    companyRegistration: 'A company registration  is required',
+    email: 'Email is required',
+    contact: 'Contact number is required',
+    experience: 'Experience is required',
+    location: 'Location is required',
+    portfolio: 'Portfolio is required',
+    about: 'A company description is required'
+  };
+
+  registrationForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    tradingName: ['', Validators.required],
+    companyRegistration: ['', Validators.required],
+    email: ['', Validators.required],
+    contact: ['', Validators.required],
+    experience: ['', Validators.required],
+    location: ['', Validators.required],
+    portfolio: ['', Validators.required],
+    about: ['', Validators.required]
   })
 
   ngOnInit() {
@@ -29,7 +41,8 @@ export class CompanyRegistrationComponent implements OnInit {
 
   submit() {
     this.companyRegistrationService.createProfileUsingPOST(this.registrationForm.value).subscribe(() => {
-      console.log('subimtted');
+    }, () => {
+      // todo: if there is an error submitting to the backend
     });
   }
 

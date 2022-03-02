@@ -1,16 +1,62 @@
 <form [formGroup]="registrationForm" id="registration" (ngSubmit)="submit()">
 
-<label for="name">Name</label><input id="name" formControlName="name" type="text">
-<label for="trading-name">Trading Name</label><input id="trading-name" formControlName="tradingName" type="text">
-<label for="company-registration">Company Registration</label><input id="company-registration" formControlName="companyRegistration" type="text">
-<label for="email">Email</label><input id="email" formControlName="email" type="text">
-<label for="contact">Contact</label><input id="contact" formControlName="contact" type="text">
-<label for="experience">Experience</label><input id="experience" formControlName="experience" type="text">
-<label for="location">Location</label><input id="location" formControlName="location" type="text">
-<label for="portfolio">Portfolio</label><input id="portfolio" formControlName="portfolio" type="text">
-<label for="about">About</label><input id="about" formControlName="about" type="text">
+    <div>
+        <label for="name">Name</label><input id="name" formControlName="name" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.name.valid && registrationForm.controls.name.touched">{{validationMessages.name}}</small>
+    </div>
 
-<button id="submit" type="submit">Submit</button>
+    <div>
+        <label for="trading-name">Trading Name</label><input id="trading-name" formControlName="tradingName"
+            type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.tradingName.valid && registrationForm.controls.tradingName.touched">{{validationMessages.tradingName}}</small>
+    </div>
+
+    <div>
+        <label for="company-registration">Company Registration</label><input id="company-registration"
+            formControlName="companyRegistration" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.companyRegistration.valid && registrationForm.controls.companyRegistration.touched">{{validationMessages.companyRegistration}}</small>
+    </div>
+
+    <div>
+        <label for="email">Email</label><input id="email" formControlName="email" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.email.valid && registrationForm.controls.email.touched">{{validationMessages.email}}</small>
+    </div>
+
+    <div>
+        <label for="contact">Contact</label><input id="contact" formControlName="contact" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.contact.valid && registrationForm.controls.contact.touched">{{validationMessages.contact}}</small>
+    </div>
+
+    <div>
+        <label for="experience">Experience</label><input id="experience" formControlName="experience" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.experience.valid && registrationForm.controls.experience.touched">{{validationMessages.experience}}</small>
+    </div>
+
+    <div>
+        <label for="location">Location</label><input id="location" formControlName="location" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.location.valid && registrationForm.controls.location.touched">{{validationMessages.location}}</small>
+    </div>
+
+    <div>
+        <label for="portfolio">Portfolio</label><input id="portfolio" formControlName="portfolio" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.portfolio.valid && registrationForm.controls.portfolio.touched">{{validationMessages.portfolio}}</small>
+    </div>
+
+    <div>
+        <label for="about">About</label><input id="about" formControlName="about" type="text">
+        <small class="error"
+            *ngIf="!registrationForm.controls.about.valid && registrationForm.controls.about.touched">{{validationMessages.about}}</small>
+    </div>
+
+    <button id="submit" type="submit" [disabled]="registrationForm.invalid">Submit</button>
 </form>
 
 <!-- |Name          |Trading Name|Company Reg   |Email            |Contact   |Experience|Working hours|Location|Portfolio|Socials                                     |About                    |
