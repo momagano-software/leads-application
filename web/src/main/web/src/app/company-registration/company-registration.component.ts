@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyProfileControllerService } from '../api/services';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators,FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-company-registration',
@@ -12,7 +12,7 @@ export class CompanyRegistrationComponent implements OnInit {
   constructor(private companyRegistrationService: CompanyProfileControllerService,
     private formBuilder: FormBuilder) { }
 
-    validationMessages = {
+  validationMessages = {
     name: 'Name is required',
     tradingName: 'Trading name is required',
     companyRegistration: 'A company registration  is required',
@@ -34,7 +34,24 @@ export class CompanyRegistrationComponent implements OnInit {
     location: ['', Validators.required],
     portfolio: ['', Validators.required],
     about: ['', Validators.required]
-  })
+  });
+
+  workingHoursForm = this.formBuilder.group({
+    day: [''],
+    startHour: [''],
+    startMinute: [''],
+    endHour: [''],
+    endMinute: ['']
+  });
+
+  workingHours = new Map();
+
+  readonly daysOfWeek = ["MON", "TUES", "WED", "THUR", "FRI", "SAT", "SUN"];
+  readonly remainingDaysOfWeek = ["MON", "TUES", "WED", "THUR", "FRI", "SAT", "SUN"];
+  readonly hoursOfDay = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
+  readonly minutesOfDay = ["00", "15", "30"];
+
+  addingWorkHours = false;
 
   ngOnInit() {
   }
@@ -44,6 +61,16 @@ export class CompanyRegistrationComponent implements OnInit {
     }, () => {
       // todo: if there is an error submitting to the backend
     });
+  }
+
+  addDayOfWeek() {
+    console.log()
+    console.table(this.workingHoursForm.value)
+    // this.workingHours.set("MON", {
+    //   "start": "07h00",
+    //   "end": "17h00"
+    // });
+    this.addingWorkHours = false;
   }
 
 }

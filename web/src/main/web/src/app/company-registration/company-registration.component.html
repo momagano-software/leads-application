@@ -56,6 +56,41 @@
             *ngIf="!registrationForm.controls.about.valid && registrationForm.controls.about.touched">{{validationMessages.about}}</small>
     </div>
 
+    <div>
+        <button id="addWorkingHours" (click)="addingWorkHours=!addingWorkHours">{{addingWorkHours ? '-':'+'}}</button>
+        <div *ngIf="addingWorkHours">
+            <form [formGroup]="workingHoursForm" id="workingHoursForm">
+                <select name="dayOfWeekSelect" id="dayOfWeekSelect" formControlName="day">
+                    <option *ngFor="let day of remainingDaysOfWeek" value="day">{{day}}</option>
+                </select>
+                <div>
+                    Start
+                    <select name="startHour" id="startHour" formControlName="startHour">
+                        <option *ngFor="let hour of hoursOfDay" value="hour">{{hour}}</option>
+                    </select>
+                    :
+                    <select name="startMinute" id="startMinute" formControlName="startMinute">
+                        <option *ngFor="let minute of minutesOfDay" value="minute">{{minute}}</option>
+                    </select>
+                </div>
+                <div>
+                    End
+                    <select name="endHour" id="endHour" formControlName="endHour">
+                        <option *ngFor="let hour of hoursOfDay" value="hour">{{hour}}</option>
+                    </select>
+                    :
+                    <select name="endMinute" id="endMinute" formControlName="endMinute">
+                        <option *ngFor="let minute of minutesOfDay" value="minute">{{minute}}</option>
+                    </select>
+                </div>
+                <button (click)="addDayOfWeek()">Add</button>
+            </form>
+        </div>
+        <div *ngFor="let workingHour of workingHours | keyvalue">
+            <div>{{workingHour.key}} -- {{workingHour.value["start"]}}-{{workingHour.value["end"]}}</div>
+        </div>
+    </div>
+
     <button id="submit" type="submit" [disabled]="registrationForm.invalid">Submit</button>
 </form>
 
