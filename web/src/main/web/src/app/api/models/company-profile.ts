@@ -1,4 +1,5 @@
 /* tslint:disable */
+import { WorkingHours } from './working-hours';
 export interface CompanyProfile {
   about?: string;
   companyRegistration?: string;
@@ -9,4 +10,5 @@ export interface CompanyProfile {
   name?: string;
   portfolio?: string;
   tradingName?: string;
+  workingHours?: Array<WorkingHours>;
 }
