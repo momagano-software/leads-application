@@ -33,7 +33,10 @@ export class CompanyRegistrationComponent implements OnInit {
     experience: ['', Validators.required],
     location: ['', Validators.required],
     portfolio: ['', Validators.required],
-    about: ['', Validators.required]
+    about: ['', Validators.required],
+        workingHours: this.formBuilder.array([
+          // this.fb.control('')
+        ])
   });
 
   workingHoursForm = this.formBuilder.group({
@@ -44,7 +47,7 @@ export class CompanyRegistrationComponent implements OnInit {
     endMinute: ['']
   });
 
-  workingHours = new Map();
+  // workingHours = new Map();
 
   readonly daysOfWeek = ["MON", "TUES", "WED", "THUR", "FRI", "SAT", "SUN"];
   readonly remainingDaysOfWeek = ["MON", "TUES", "WED", "THUR", "FRI", "SAT", "SUN"];
@@ -72,5 +75,20 @@ export class CompanyRegistrationComponent implements OnInit {
     // });
     this.addingWorkHours = false;
   }
-
+  get workingHours() {
+      return this.registrationForm.get('workingHours') as FormArray;
+    }
+    addWorkingHours() {
+      this.workingHours.push(this.formBuilder.group({
+        dayOfTheWeek: [''],
+        startTimeHour: [''],
+        startTimeMinute: [''],
+        endTimeHour: [''],
+        endTimeMinute: ['']
+      }));
+      // console.log(this.aliases);
+    }
+    removeWorkingHours(index){
+      this.workingHours.removeAt(index);
+    }
 }

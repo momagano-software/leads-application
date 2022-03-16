@@ -56,40 +56,70 @@
             *ngIf="!registrationForm.controls.about.valid && registrationForm.controls.about.touched">{{validationMessages.about}}</small>
     </div>
 
-    <div>
-        <button id="addWorkingHours" (click)="addingWorkHours=!addingWorkHours">{{addingWorkHours ? '-':'+'}}</button>
-        <div *ngIf="addingWorkHours">
-            <form [formGroup]="workingHoursForm" id="workingHoursForm">
-                <select name="dayOfWeekSelect" id="dayOfWeekSelect" formControlName="day">
-                    <option *ngFor="let day of remainingDaysOfWeek" value="day">{{day}}</option>
-                </select>
-                <div>
-                    Start
-                    <select name="startHour" id="startHour" formControlName="startHour">
-                        <option *ngFor="let hour of hoursOfDay" value="hour">{{hour}}</option>
-                    </select>
-                    :
-                    <select name="startMinute" id="startMinute" formControlName="startMinute">
-                        <option *ngFor="let minute of minutesOfDay" value="minute">{{minute}}</option>
-                    </select>
-                </div>
-                <div>
-                    End
-                    <select name="endHour" id="endHour" formControlName="endHour">
-                        <option *ngFor="let hour of hoursOfDay" value="hour">{{hour}}</option>
-                    </select>
-                    :
-                    <select name="endMinute" id="endMinute" formControlName="endMinute">
-                        <option *ngFor="let minute of minutesOfDay" value="minute">{{minute}}</option>
-                    </select>
-                </div>
-                <button (click)="addDayOfWeek()">Add</button>
-            </form>
-        </div>
-        <div *ngFor="let workingHour of workingHours | keyvalue">
-            <div>{{workingHour.key}} -- {{workingHour.value["start"]}}-{{workingHour.value["end"]}}</div>
-        </div>
+  <div formArrayName="workingHours">
+    <h2>Working Hours</h2>
+    <button type="button" (click)="addWorkingHours()">+ Add another timeslot</button>
+
+    <div *ngFor="let timeSlot of workingHours.controls; let i=index">
+      <!-- The repeated timeSlot template -->
+      <label for="timeSlot-{{i}}">timeSlot:</label>
+      <div [formGroupName]="i">
+        <select
+          name="dayOfWeekSelect{{i}}"
+          id="dayOfWeekSelect{{i}}"
+          formControlName="dayOfTheWeek"
+        >
+          <option *ngFor="let day of remainingDaysOfWeek" value="{{day}}"
+          >{{day}}</option
+          >
+        </select>
+        <select
+          name="startTimeHour{{i}}"
+          id="startTimeHour{{i}}"
+          formControlName="startTimeHour"
+        >
+          <option
+            *ngFor="let startTimeHour of hoursOfDay"
+            value="{{startTimeHour}}"
+          >{{startTimeHour}}</option
+          >
+        </select>
+        <select
+          name="startTimeMinute{{i}}"
+          id="startTimeMinute{{i}}"
+          formControlName="startTimeMinute"
+        >
+          <option
+            *ngFor="let startTimeMinute of minutesOfDay"
+            value="{{startTimeMinute}}"
+          >{{startTimeMinute}}</option
+          >
+        </select>
+        <select
+          name="endTimeHour{{i}}"
+          id="endTimeHour{{i}}"
+          formControlName="endTimeHour"
+        >
+          <option *ngFor="let endTimeHour of hoursOfDay" value="{{endTimeHour}}"
+          >{{endTimeHour}}</option
+          >
+        </select>
+        <select
+          name="endTimeMinute{{i}}"
+          id="endTimeMinute{{i}}"
+          formControlName="endTimeMinute"
+        >
+          <option
+            *ngFor="let endTimeMinute of minutesOfDay"
+            value="{{endTimeMinute}}"
+          >{{endTimeMinute}}</option
+          >
+        </select>
+      </div><button id="removeTimeSlot{{i}}" (click) = "removeWorkingHours(i)">-</button>
+
+      <!-- <input id="timeSlot-{{ i }}" type="text" [formControlName]="i" /> <button (click)="removetimeSlot(i)">-</button> -->
     </div>
+  </div>
 
     <button id="submit" type="submit" [disabled]="registrationForm.invalid">Submit</button>
 </form>

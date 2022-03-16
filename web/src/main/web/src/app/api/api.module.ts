@@ -5,7 +5,6 @@ import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration
 
 import { HomeControllerService } from './services/home-controller.service';
 import { CompanyProfileControllerService } from './services/company-profile-controller.service';
-import { SomethingControllerService } from './services/something-controller.service';
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -21,8 +20,7 @@ import { SomethingControllerService } from './services/something-controller.serv
   providers: [
     ApiConfiguration,
     HomeControllerService,
-    CompanyProfileControllerService,
-    SomethingControllerService
+    CompanyProfileControllerService
   ],
 })
 export class ApiModule {

@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { BaseService as __BaseService } from '../base-service';
@@ -6,11 +7,15 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+
+/**
+ * Home Controller
+ */
 @Injectable({
   providedIn: 'root',
 })
 class HomeControllerService extends __BaseService {
-  static readonly addSaleUsingPOSTPath = '/sales/sale';
+  static readonly homeUsingGETPath = '/home';
 
   constructor(
     config: __Configuration,
@@ -19,37 +24,43 @@ class HomeControllerService extends __BaseService {
     super(config, http);
   }
 
-    getSomethingGETResponse(): __Observable<__StrictHttpResponse<any>> {
-      let __params = this.newParams();
-      let __headers = new HttpHeaders();
-      let __body: any = null;
-      let req = new HttpRequest<any>(
-        'GET',
-        this.rootUrl + `/something`,
-        __body,
-        {
-          headers: __headers,
-          params: __params,
-          responseType: 'text'
-        });
+  /**
+   * home
+   * @return OK
+   */
+  homeUsingGETResponse(): __Observable<__StrictHttpResponse<string>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/home`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'text'
+      });
 
-      return this.http.request<any>(req).pipe(
-        __filter(_r => _r instanceof HttpResponse),
-        __map((_r) => {
-          return _r as __StrictHttpResponse<any>;
-        })
-      );
-    }
-
-      getSomething(): __Observable<any> {
-        return this.getSomethingGETResponse().pipe(
-          __map(_r => _r.body as any)
-        );
-      }
-
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<string>;
+      })
+    );
+  }
+  /**
+   * home
+   * @return OK
+   */
+  homeUsingGET(): __Observable<string> {
+    return this.homeUsingGETResponse().pipe(
+      __map(_r => _r.body as string)
+    );
+  }
 }
+
 module HomeControllerService {
 }
 
 export { HomeControllerService }
-
