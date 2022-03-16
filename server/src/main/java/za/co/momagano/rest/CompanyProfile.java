@@ -2,6 +2,7 @@ package za.co.momagano.rest;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class CompanyProfile implements Serializable {
     private  String email;
     private  String contact;
     private  String experience;
-//    private  List<WorkingHours> workingHours;
+    @Transient
+    private  List<WorkingHours> workingHours;
     private  String location;
     private  String portfolio;
 //    private  List<Social> socials;
@@ -104,6 +106,14 @@ public class CompanyProfile implements Serializable {
         this.about = about;
     }
 
+    public List<WorkingHours> getWorkingHours() {
+        return workingHours;
+    }
+
+    public void setWorkingHours(List<WorkingHours> workingHours) {
+        this.workingHours = workingHours;
+    }
+
     @Override
     public String toString() {
         return "CompanyProfile{" +
@@ -113,6 +123,7 @@ public class CompanyProfile implements Serializable {
                 ", email='" + email + '\'' +
                 ", contact='" + contact + '\'' +
                 ", experience='" + experience + '\'' +
+                ", workingHours=" + workingHours +
                 ", location='" + location + '\'' +
                 ", portfolio='" + portfolio + '\'' +
                 ", about='" + about + '\'' +
