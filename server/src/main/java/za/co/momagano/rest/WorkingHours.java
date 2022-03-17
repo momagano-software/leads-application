@@ -1,12 +1,22 @@
 package za.co.momagano.rest;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.time.LocalTime;
-
+import java.util.List;
+@Entity
 public class WorkingHours {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    //todo: add embeddable id?
     private String dayOfTheWeek;
     private LocalTime startTime;
     private LocalTime endTime;
+    @ManyToMany(mappedBy = "workingHours")
+    @JsonIgnore
+    List<CompanyProfile> companyProfiles;
 
     public WorkingHours() {
     }

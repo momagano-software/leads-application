@@ -1,8 +1,6 @@
 package za.co.momagano.rest;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,7 +13,10 @@ public class CompanyProfile implements Serializable {
     private  String email;
     private  String contact;
     private  String experience;
-    @Transient
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "company_working_hours",
+            joinColumns = @JoinColumn(name = "company_companyRegistration", referencedColumnName = "companyRegistration"))
     private  List<WorkingHours> workingHours;
     private  String location;
     private  String portfolio;
