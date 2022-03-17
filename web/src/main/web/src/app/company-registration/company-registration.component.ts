@@ -60,9 +60,11 @@ export class CompanyRegistrationComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.registrationForm.value);
     this.companyRegistrationService.createProfileUsingPOST(this.registrationForm.value).subscribe(() => {
     }, () => {
       // todo: if there is an error submitting to the backend
+      
     });
   }
 
@@ -81,12 +83,10 @@ export class CompanyRegistrationComponent implements OnInit {
     addWorkingHours() {
       this.workingHours.push(this.formBuilder.group({
         dayOfTheWeek: [''],
-        startTimeHour: [''],
-        startTimeMinute: [''],
-        endTimeHour: [''],
-        endTimeMinute: ['']
+        startTime: [''],
+        endTime: [''],
       }));
-      // console.log(this.aliases);
+      console.log(this.workingHours);
     }
     removeWorkingHours(index){
       this.workingHours.removeAt(index);

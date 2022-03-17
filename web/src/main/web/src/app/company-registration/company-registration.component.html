@@ -73,7 +73,9 @@
           >{{day}}</option
           >
         </select>
-        <select
+        <input type="time" id="start-time{{i}}" name="start-time{{i}}" formControlName="startTime" required>
+        <input type="time" id="end-time{{i}}" name="end-time{{i}}" formControlName="endTime"required>
+        <!-- <select
           name="startTimeHour{{i}}"
           id="startTimeHour{{i}}"
           formControlName="startTimeHour"
@@ -94,8 +96,8 @@
             value="{{startTimeMinute}}"
           >{{startTimeMinute}}</option
           >
-        </select>
-        <select
+        </select> -->
+        <!-- <select
           name="endTimeHour{{i}}"
           id="endTimeHour{{i}}"
           formControlName="endTimeHour"
@@ -114,7 +116,7 @@
             value="{{endTimeMinute}}"
           >{{endTimeMinute}}</option
           >
-        </select>
+        </select> -->
       </div><button id="removeTimeSlot{{i}}" (click) = "removeWorkingHours(i)">-</button>
 
       <!-- <input id="timeSlot-{{ i }}" type="text" [formControlName]="i" /> <button (click)="removetimeSlot(i)">-</button> -->
