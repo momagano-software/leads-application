@@ -2,55 +2,60 @@ package za.co.momagano.rest;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
-import java.time.LocalTime;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import java.util.List;
+import java.util.Objects;
+
 @Entity
 public class WorkingHours {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    //todo: add embeddable id?
-    private String dayOfTheWeek;
-    private LocalTime startTime;
-    private LocalTime endTime;
+
+    @EmbeddedId
+    private WorkingHoursId workingHoursId;
+
     @ManyToMany(mappedBy = "workingHours")
     @JsonIgnore
     List<CompanyProfile> companyProfiles;
 
     public WorkingHours() {
     }
-    public String getDayOfTheWeek() {
-        return dayOfTheWeek;
+
+    public WorkingHoursId getWorkingHoursId() {
+        return workingHoursId;
     }
 
-    public void setDayOfTheWeek(String dayOfTheWeek) {
-        this.dayOfTheWeek = dayOfTheWeek;
+    public void setWorkingHoursId(WorkingHoursId workingHoursId) {
+        this.workingHoursId = workingHoursId;
     }
 
-
-    public LocalTime getStartTime() {
-        return startTime;
+    public List<CompanyProfile> getCompanyProfiles() {
+        return companyProfiles;
     }
 
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
+    public void setCompanyProfiles(List<CompanyProfile> companyProfiles) {
+        this.companyProfiles = companyProfiles;
     }
 
-    public LocalTime getEndTime() {
-        return endTime;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WorkingHours that = (WorkingHours) o;
+        return Objects.equals(workingHoursId, that.workingHoursId) &&
+                Objects.equals(companyProfiles, that.companyProfiles);
     }
 
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
+    @Override
+    public int hashCode() {
+        return Objects.hash(workingHoursId, companyProfiles);
     }
 
     @Override
     public String toString() {
         return "WorkingHours{" +
-                "dayOfTheWeek='" + dayOfTheWeek + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
+                "workingHoursId=" + workingHoursId +
+                ", companyProfiles=" + companyProfiles +
                 '}';
     }
 }
