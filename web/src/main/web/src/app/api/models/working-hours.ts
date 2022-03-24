@@ -1,8 +1,5 @@
 /* tslint:disable */
+import { WorkingHoursId } from './working-hours-id';
 export interface WorkingHours {
-  dayOfTheWeek?: string;
-  endTimeHour?: string;
-  endTimeMinute?: string;
-  startTimeHour?: string;
-  startTimeMinute?: string;
+  workingHoursId?: WorkingHoursId;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyProfileControllerService } from '../api/services';
-import { FormBuilder, Validators,FormArray } from '@angular/forms';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-company-registration',
@@ -34,9 +34,9 @@ export class CompanyRegistrationComponent implements OnInit {
     location: ['', Validators.required],
     portfolio: ['', Validators.required],
     about: ['', Validators.required],
-        workingHours: this.formBuilder.array([
-          // this.fb.control('')
-        ])
+    workingHours: this.formBuilder.array([
+      // this.fb.control('')
+    ])
   });
 
   workingHoursForm = this.formBuilder.group({
@@ -64,7 +64,7 @@ export class CompanyRegistrationComponent implements OnInit {
     this.companyRegistrationService.createProfileUsingPOST(this.registrationForm.value).subscribe(() => {
     }, () => {
       // todo: if there is an error submitting to the backend
-      
+
     });
   }
 
@@ -78,17 +78,28 @@ export class CompanyRegistrationComponent implements OnInit {
     this.addingWorkHours = false;
   }
   get workingHours() {
-      return this.registrationForm.get('workingHours') as FormArray;
-    }
-    addWorkingHours() {
-      this.workingHours.push(this.formBuilder.group({
-        dayOfTheWeek: [''],
-        startTime: [''],
-        endTime: [''],
-      }));
-      console.log(this.workingHours);
-    }
-    removeWorkingHours(index){
-      this.workingHours.removeAt(index);
-    }
+    return this.registrationForm.get('workingHours') as FormArray;
+  }
+  // workingHoursId(i: any) {
+  //   return this.workingHours[i];
+  // }
+  addWorkingHours() {
+    // let workingHoursId = this.formBuilder.group({ dayOfTheWeek: [''], startTime: [''], endTime: [''] });
+    // this.workingHours.push(this.formBuilder.control('test'));
+    let myObject = this.formBuilder.group({ dayOfTheWeek: [''], startTime: [''], endTime: [''] }); 
+    let workingHoursId = this.formBuilder.group(myObject);
+     this.workingHours.push(workingHoursId); 
+
+    // this.workingHours.push(this.formBuilder.control({
+    //   workingHoursId: this.formBuilder.group({
+    //     dayOfTheWeek: [''],
+    //     startTime: [''],
+    //     endTime: [''],
+    //   })
+    // }));
+    console.log(this.workingHours);
+  }
+  removeWorkingHours(index) {
+    this.workingHours.removeAt(index);
+  }
 }
