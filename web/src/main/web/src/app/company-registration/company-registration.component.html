@@ -103,7 +103,32 @@
       <!-- The repeated timeSlot template -->
       <label for="timeSlot-{{i}}">timeSlot:</label>
       <div [formGroupName]="i">
-        <p [formGroupName]="workingHoursId">fdas</p>
+        <div formGroupName="workingHoursId">
+          <select
+            name="dayOfWeekSelect{{i}}"
+            id="dayOfWeekSelect{{i}}"
+            formControlName="dayOfTheWeek"
+          >
+            <option *ngFor="let day of remainingDaysOfWeek" value="{{day}}"
+            >{{day}}</option
+            >
+          </select>
+          <input
+            type="time"
+            id="start-time{{i}}"
+            name="start-time{{i}}"
+            formControlName="startTime"
+            required
+          />
+          <input
+            type="time"
+            id="end-time{{i}}"
+            name="end-time{{i}}"
+            formControlName="endTime"
+            required
+          />
+        </div>
+        <!-- <p [formGroupName]="workingHoursId">fdas</p> -->
         <!-- <select
           name="dayOfWeekSelect{{i}}"
           id="dayOfWeekSelect{{i}}"
@@ -153,7 +178,7 @@
             name="end-time{{i}}"
             formControlName="endTime"
             required
-          /> 
+          />
         </div> -->
       <button id="removeTimeSlot{{i}}" (click)="removeWorkingHours(i)">
         -

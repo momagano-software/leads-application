@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyProfileControllerService } from '../api/services';
-import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-company-registration',
@@ -35,7 +35,7 @@ export class CompanyRegistrationComponent implements OnInit {
     portfolio: ['', Validators.required],
     about: ['', Validators.required],
     workingHours: this.formBuilder.array([
-      // this.fb.control('')
+      // this.formBuilder.group({workingHoursId:{}})
     ])
   });
 
@@ -84,12 +84,17 @@ export class CompanyRegistrationComponent implements OnInit {
   //   return this.workingHours[i];
   // }
   addWorkingHours() {
-    // let workingHoursId = this.formBuilder.group({ dayOfTheWeek: [''], startTime: [''], endTime: [''] });
-    // this.workingHours.push(this.formBuilder.control('test'));
-    let myObject = this.formBuilder.group({ dayOfTheWeek: [''], startTime: [''], endTime: [''] }); 
-    let workingHoursId = this.formBuilder.group(myObject);
-     this.workingHours.push(workingHoursId); 
-
+//     let workingHoursId= this.formBuilder.group({ dayOfTheWeek: [''], startTime: [''], endTime: [''] });
+//     // this.workingHours.push(this.formBuilder.control('test'));
+//     // let myObject = this.formBuilder.group({ dayOfTheWeek: [''], startTime: [''], endTime: [''] });
+//     // let workingHoursId = this.formBuilder.group(myObject);
+//      this.workingHours.push(workingHoursId);
+    let workingHoursId = this.formBuilder.group({
+        dayOfTheWeek: [''],
+        startTime: [''],
+        endTime: ['']
+      });
+      this.workingHours.push(new FormGroup({workingHoursId}));
     // this.workingHours.push(this.formBuilder.control({
     //   workingHoursId: this.formBuilder.group({
     //     dayOfTheWeek: [''],
