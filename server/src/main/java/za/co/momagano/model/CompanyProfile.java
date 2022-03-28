@@ -1,17 +1,26 @@
 package za.co.momagano.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 public class CompanyProfile implements Serializable {
     @Id
+    @NotEmpty
     private String companyRegistration;
+    @NotEmpty
     private String tradingName;
+    @NotEmpty
     private  String name;
+    @NotEmpty
+    @Email(message = "Valid email required")
     private  String email;
+    @NotEmpty
     private  String contact;
+    @NotEmpty
     private  String experience;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
