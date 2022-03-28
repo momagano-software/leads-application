@@ -1,4 +1,4 @@
-package za.co.momagano.rest;
+package za.co.momagano.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

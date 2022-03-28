@@ -1,9 +1,11 @@
-package za.co.momagano.rest;
+package za.co.momagano.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import za.co.momagano.model.CompanyProfile;
+import za.co.momagano.repository.CompanyProfileRepository;
 
 import static java.util.Optional.*;
 import static org.mockito.ArgumentMatchers.any;

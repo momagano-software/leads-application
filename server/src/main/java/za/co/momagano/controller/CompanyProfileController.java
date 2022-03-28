@@ -1,8 +1,10 @@
-package za.co.momagano.rest;
+package za.co.momagano.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import za.co.momagano.model.CompanyProfile;
+import za.co.momagano.service.CompanyProfileService;
 
 @RestController
 public class CompanyProfileController {
