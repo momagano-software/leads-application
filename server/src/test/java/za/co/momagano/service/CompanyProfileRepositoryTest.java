@@ -23,8 +23,7 @@ class CompanyProfileRepositoryTest {
     @Test
     public void companyProfileShouldBeSavedToRepository() {
         assertEquals(0, companyProfileRepository.count());
-        CompanyProfile companyProfile = new CompanyProfile("1990/05/904329","A company");
-        companyProfileRepository.save(companyProfile);
+        companyProfileRepository.save(CompanyProfileTestHelper.getFullCompanyProfile());
 
         assertEquals(1, companyProfileRepository.count());
 

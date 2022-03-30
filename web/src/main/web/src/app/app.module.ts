@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CompanyRegistrationComponent } from './company-registration/company-registration.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     CompanyRegistrationComponent,
     NavigationComponent,
+    CustomerRegistrationComponent,
   ],
   imports: [
     BrowserModule,
