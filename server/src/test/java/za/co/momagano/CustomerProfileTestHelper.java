@@ -1,4 +1,4 @@
-package za.co.momagano.service;
+package za.co.momagano;
 
 import za.co.momagano.model.CustomerProfile;
 

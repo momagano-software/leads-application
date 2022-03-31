@@ -1,4 +1,4 @@
-package za.co.momagano.service;
+package za.co.momagano.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -8,16 +8,17 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import za.co.momagano.controller.CustomerProfileController;
-import za.co.momagano.model.CompanyProfile;
 import za.co.momagano.model.CustomerProfile;
+import za.co.momagano.service.CustomerProfileService;
+import za.co.momagano.CustomerProfileTestHelper;
+
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = CustomerProfileController.class)
 @AutoConfigureMockMvc
@@ -35,6 +36,22 @@ public class CustomerProfileControllerTest {
                 .content(getObjectMapper().writeValueAsString(CustomerProfileTestHelper.getFullCustomerProfile())))
                 .andExpect(status().isCreated());
         verify(customerProfileService,times(1)).addProfile(any(CustomerProfile.class));
+    }
+
+    @Test
+    public void shouldReturnNullObjectWhenCustomerProfileNotFound() throws Exception {
+
+        when(customerProfileService.getProfile(anyString())).thenReturn(null);
+
+        final CustomerProfile customerProfile = CustomerProfileTestHelper.getFullCustomerProfile();
+
+        mockMvc.perform(get("/customer/profile")
+                .param("customerEmail", customerProfile.getEmail())
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(content().string(""))
+                .andExpect(status().isOk());
+        verify(customerProfileService,times(1)).getProfile(customerProfile.getEmail());
     }
 
 

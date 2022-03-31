@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { CustomerProfileControllerService } from '../api/services';
 
 @Component({
   selector: 'app-customer-registration',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerRegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private customerRegistrationService: CustomerProfileControllerService) { }
+
+  customerProfile = this.fb.group({
+    name: [''],
+    surname: [''],
+    email: [''],
+    contact: ['']
+  });
 
   ngOnInit() {
+  }
+
+  submit() {
+    this.customerRegistrationService.addCustomerProfileUsingPOST(this.customerProfile.value).subscribe( res => {
+    })
   }
 
 }

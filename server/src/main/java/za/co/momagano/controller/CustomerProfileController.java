@@ -24,6 +24,6 @@ public class CustomerProfileController {
 
     @GetMapping("/profile")
     public ResponseEntity<CustomerProfile> getCustomerProfileByEmail(@RequestParam String customerEmail) {
-        return ResponseEntity.ok(customerProfileService.getProfile(customerEmail));
+        return ResponseEntity.ok(customerProfileService.getProfile(customerEmail.trim()));
     }
 }

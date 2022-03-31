@@ -1,13 +1,21 @@
 package za.co.momagano.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "customer_profile")
 public class CustomerProfile {
 
     private String name;
     private String surname;
+    @Id
     private String email;
     private String contact;
+
+    public CustomerProfile(){}
 
     public CustomerProfile(String name, String surname, String email, String contact) {
         this.name = name;
@@ -62,5 +70,15 @@ public class CustomerProfile {
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, email, contact);
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerProfile{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", contact='" + contact + '\'' +
+                '}';
     }
 }

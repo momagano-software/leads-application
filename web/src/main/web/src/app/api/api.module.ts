@@ -3,6 +3,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration';
 
+import { CustomerProfileControllerService } from './services/customer-profile-controller.service';
 import { HomeControllerService } from './services/home-controller.service';
 import { CompanyProfileControllerService } from './services/company-profile-controller.service';
 
@@ -19,6 +20,7 @@ import { CompanyProfileControllerService } from './services/company-profile-cont
   declarations: [],
   providers: [
     ApiConfiguration,
+    CustomerProfileControllerService,
     HomeControllerService,
     CompanyProfileControllerService
   ],

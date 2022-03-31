@@ -1,23 +1,25 @@
+<form [formGroup]="customerProfile" (ngSubmit)="submit()">
 <div>
-    <label for="name">Name</label>
-    <input type="text" id="name">
-</div>
+        <label for="name">Name</label>
+        <input formControlName="name" type="text" id="name">
+    </div>
 
-<div>
-    <label for="name">Surname</label>
-    <input type="text" id="surname">
-</div>
+    <div>
+        <label for="name">Surname</label>
+        <input formControlName="surname" type="text" id="surname">
+    </div>
 
-<div>
-    <label for="name">Email</label>
-    <input type="text" id="email">
-</div>
+    <div>
+        <label for="name">Email</label>
+        <input formControlName="email" type="text" id="email">
+    </div>
 
-<div>
-    <label for="name">Contact</label>
-    <input type="text" id="contact">
-</div>
+    <div>
+        <label for="name">Contact</label>
+        <input formControlName="contact" type="text" id="contact">
+    </div>
 
-<div>
-    <button type="submit" id="submit">Submit</button>
-</div>
+    <div>
+        <button type="submit" id="submit">Submit</button>
+    </div>
+</form>

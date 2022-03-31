@@ -1,5 +1,4 @@
-package za.co.momagano.service;
-
+package za.co.momagano.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.Test;
@@ -9,8 +8,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import za.co.momagano.controller.CompanyProfileController;
 import za.co.momagano.model.CompanyProfile;
+import za.co.momagano.service.CompanyProfileService;
+import za.co.momagano.CompanyProfileTestHelper;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
