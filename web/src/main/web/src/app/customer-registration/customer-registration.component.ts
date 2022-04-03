@@ -19,9 +19,9 @@ export class CustomerRegistrationComponent implements OnInit {
 
   customerProfile = this.fb.group({
     name: ['', Validators.required],
-    surname: [''],
-    email: [''],
-    contact: ['']
+    surname: ['', Validators.required],
+    email: ['', Validators.required],
+    contact: ['', Validators.required]
   });
 
   ngOnInit() {

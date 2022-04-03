@@ -5,23 +5,34 @@
         <small
         class="error"
         *ngIf="!customerProfile.controls.name.valid && customerProfile.controls.name.touched"
-        >{{validationMessages.name}}</small
-      >
+        >{{validationMessages.name}}</small>
     </div>
 
     <div>
-        <label for="name">Surname</label>
+        <label for="surname">Surname</label>
         <input formControlName="surname" type="text" id="surname">
+        <small
+        class="error"
+        *ngIf="!customerProfile.controls.surname.valid && customerProfile.controls.surname.touched"
+        >{{validationMessages.surname}}</small>
     </div>
 
     <div>
-        <label for="name">Email</label>
+        <label for="email">Email</label>
         <input formControlName="email" type="text" id="email">
+        <small
+        class="error"
+        *ngIf="!customerProfile.controls.email.valid && customerProfile.controls.email.touched"
+        >{{validationMessages.email}}</small>
     </div>
 
     <div>
-        <label for="name">Contact</label>
+        <label for="contact">Contact</label>
         <input formControlName="contact" type="text" id="contact">
+        <small
+        class="error"
+        *ngIf="!customerProfile.controls.contact.valid && customerProfile.controls.contact.touched"
+        >{{validationMessages.contact}}</small>
     </div>
 
     <div>
