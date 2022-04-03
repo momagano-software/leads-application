@@ -2,6 +2,11 @@
 <div>
         <label for="name">Name</label>
         <input formControlName="name" type="text" id="name">
+        <small
+        class="error"
+        *ngIf="!customerProfile.controls.name.valid && customerProfile.controls.name.touched"
+        >{{validationMessages.name}}</small
+      >
     </div>
 
     <div>
@@ -20,6 +25,6 @@
     </div>
 
     <div>
-        <button type="submit" id="submit">Submit</button>
+        <button type="submit" id="submit" [disabled]="customerProfile.invalid" >Submit</button>
     </div>
 </form>

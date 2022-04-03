@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CustomerProfileControllerService } from '../api/services';
 
 @Component({
@@ -10,9 +10,15 @@ import { CustomerProfileControllerService } from '../api/services';
 export class CustomerRegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private customerRegistrationService: CustomerProfileControllerService) { }
+  validationMessages = {
+    name: 'Name is required',
+    surname: 'Surname is required',
+    email: 'Email is required',
+    contact: 'Contact number is required',
+  };
 
   customerProfile = this.fb.group({
-    name: [''],
+    name: ['', Validators.required],
     surname: [''],
     email: [''],
     contact: ['']
