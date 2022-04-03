@@ -22,8 +22,11 @@
         <input formControlName="email" type="text" id="email">
         <small
         class="error"
-        *ngIf="!customerProfile.controls.email.valid && customerProfile.controls.email.touched"
+        *ngIf="customerProfile.controls.email.touched && customerProfile.controls.email.value.length == 0"
         >{{validationMessages.email}}</small>
+        <small class="error" *ngIf="customerProfile.controls.email.value.length > 0 &&!customerProfile.controls.email.valid">
+            {{validationMessages.emailInvalid}}
+        </small>
     </div>
 
     <div>

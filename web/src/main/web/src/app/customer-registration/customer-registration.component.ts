@@ -15,12 +15,13 @@ export class CustomerRegistrationComponent implements OnInit {
     surname: 'Surname is required',
     email: 'Email is required',
     contact: 'Contact number is required',
+    emailInvalid: 'Invalid email'
   };
 
   customerProfile = this.fb.group({
     name: ['', Validators.required],
     surname: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     contact: ['', Validators.required]
   });
 
