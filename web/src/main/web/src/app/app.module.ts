@@ -7,7 +7,11 @@ import { CompanyRegistrationComponent } from './company-registration/company-reg
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
-
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
+import { ServiceRegistrationComponent } from 'src/service-registration/service-registration.component';
+import { ViewCompanyProfileComponent } from 'src/view-company-profile/view-company-profile.component';
+import { FaqComponent} from 'src/service-registration/faq.type';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,24 @@ import { CustomerRegistrationComponent } from './customer-registration/customer-
     CompanyRegistrationComponent,
     NavigationComponent,
     CustomerRegistrationComponent,
+    ServiceRegistrationComponent,
+    ViewCompanyProfileComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormlyModule.forRoot({ extras: { lazyRender: true },
+      validationMessages: [
+        { name: 'required', message: 'This field is required' },
+      ],
+      types: [
+        {name: 'faqs', component: FaqComponent}
+      ]
+    }),
+    FormlyBootstrapModule
   ],
   providers: [],
   bootstrap: [AppComponent]
