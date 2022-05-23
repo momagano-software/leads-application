@@ -3,7 +3,7 @@ package za.co.momagano.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class Service implements Serializable {
+public class ServiceData implements Serializable {
     private String serviceName;
     private Integer servicePrice;
     private Integer serviceType;
@@ -11,10 +11,10 @@ public class Service implements Serializable {
     private Boolean remote;
     private List<FAQ> myFAQ;
 
-    public Service(String serviceName) {
+    public ServiceData(String serviceName) {
         this.serviceName = serviceName;
     }
-    public Service(){
+    public ServiceData(){
 
     }
 

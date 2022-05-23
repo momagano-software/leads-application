@@ -1,8 +1,10 @@
 package za.co.momagano.service;
 
-import za.co.momagano.model.Service;
+import org.springframework.stereotype.Service;
+import za.co.momagano.model.ServiceData;
 
+@Service
 public class ServiceRegistrationService {
-    public void addService(Service service) {
+    public void addService(ServiceData service) {
     }
 }

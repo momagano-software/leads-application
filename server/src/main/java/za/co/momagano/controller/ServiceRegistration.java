@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import za.co.momagano.model.Service;
+import za.co.momagano.model.ServiceData;
 import za.co.momagano.service.ServiceRegistrationService;
 
 @RestController
@@ -19,7 +19,7 @@ public class ServiceRegistration {
     }
 
     @PostMapping("/profile/{profileId}/service")
-    ResponseEntity addService(@PathVariable("profileId") String profileId, @RequestBody Service service){
+    ResponseEntity addService(@PathVariable("profileId") String profileId, @RequestBody ServiceData service){
         serviceRegistrationService.addService(service);
         return new ResponseEntity(HttpStatus.CREATED);
     }

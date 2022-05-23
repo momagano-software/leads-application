@@ -1,6 +1,5 @@
 package za.co.momagano.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import za.co.momagano.CustomerProfileTestHelper;
-import za.co.momagano.model.CompanyProfile;
-import za.co.momagano.model.Service;
+
+import za.co.momagano.model.ServiceData;
 import za.co.momagano.service.ServiceRegistrationService;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -35,9 +33,9 @@ public class ServiceRegistrationControllerTest {
         mockMvc.perform(post("/profile/{profileId}/service","1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .content(new ObjectMapper().writeValueAsString(new Service("Service Name"))))
+                .content(new ObjectMapper().writeValueAsString(new ServiceData("Service Name"))))
                 .andExpect(status().isCreated());
 
-        verify(serviceRegistrationService,times(1)).addService(any(Service.class));
+        verify(serviceRegistrationService,times(1)).addService(any(ServiceData.class));
     }
 }
