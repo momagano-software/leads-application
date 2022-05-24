@@ -7,7 +7,7 @@ import { FieldArrayType } from '@ngx-formly/core';
     <div *ngFor="let field of field.fieldGroup; let i = index;" class="row">
       <formly-field class="col" [field]="field"></formly-field>
       <div class="col-sm-2 d-flex align-items-center">
-        <button class="btn btn-danger" type="button" (click)="remove(i)">Remove</button>
+        <button class="btn btn-danger" type="button" (click)="remove(i)">Remove FAQ</button>
       </div>
     </div>
     <div style="margin:30px 0;">

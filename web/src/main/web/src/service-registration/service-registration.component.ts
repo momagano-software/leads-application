@@ -10,6 +10,12 @@ export class ServiceRegistrationComponent implements OnInit {
 
   constructor() { }
 
+
+  // todo: write service to fetch look up values from the backend; update value on options
+  // todo: asynch calls for the lookup options
+  // todo: combo will be lookup using store id and services previously captured; field array
+  
+
   ngOnInit() {
   }
   form = new FormGroup({});
@@ -18,64 +24,104 @@ export class ServiceRegistrationComponent implements OnInit {
   };
 
   fields: FormlyFieldConfig[] = [
+
+    {
+      key: 'serviceCatergory',
+      type: 'select',
+      templateOptions: {
+        label: 'Category',
+        required: true,
+        options: [
+          { value: 1, label: 'Beauty' },
+          { value: 2, label: 'Domestic Cleaning' },
+          { value: 3, label: 'Commercial Cleaning' }
+        ]
+      },
+    },
+    {
+      key: 'serviceSubCatergory',
+      type: 'select',
+      templateOptions: {
+        label: 'Sub-category',
+        required: true,
+        options: [
+          { value: 1, label: 'Hairdressing' },
+          { value: 2, label: 'Make up' }
+        ]
+      },
+    },
     {
       key: 'serviceName',
-      type: 'input',
+      type: 'select',
       templateOptions: {
         label: 'Service Name',
-        placeholder: 'Service Name',
         required: true,
-      }
+        options: [
+          { value: 1, label: 'Hair Wash' },
+          { value: 2, label: 'Hair Dye' },
+          { value: 3, label: 'Installation' }
+        ]
+      },
     },
     {
       key: 'servicePrice',
       type: 'input',
       templateOptions: {
-        type: 'number',
         label: 'Price',
         placeholder: 'Price (ZAR)',
         required: true,
-      }
+      },
+      hideExpression: '!model.serviceName'
+    },
+    {
+      key: 'ownHairPiece',
+      type: 'radio',
+      templateOptions: {
+        label: 'Own Hair Piece',
+        required: true,
+        options: [
+          {value: true, label: 'Yes'},
+          {value: false, label: 'No'}
+        ]
+      },
+      hideExpression: `model.serviceName !== 3`
+    },
+    {
+      key: 'optionDiscount',
+      type: 'input',
+      templateOptions: {
+        type: 'number',
+        label: 'Discount',
+        placeholder: 'Price (ZAR)',
+        required: true,
+      },
+      hideExpression: '!model.ownHairPiece'
     },
     {
       key: 'serviceType',
       type: 'select',
       templateOptions: {
-        label: 'Service Type',
+        label: 'Hair Type',
         required: true,
         options: [
-          { value: 1, label: 'Option 1' },
-          { value: 2, label: 'Option 2' },
-          { value: 3, label: 'Option 3' },
-          { value: 4, label: 'Option 4' },
+          { value: 1, label: 'Braids' },
+          { value: 2, label: 'Wig' }
         ]
       },
 
     },
     {
-      key: 'servicePricePerUnit',
-      type: 'input',
-      templateOptions: {
-        label: 'Price Per Unit',
-        placeholder: 'Price (ZAR)',
-        required: true,
-      },
-      hideExpression: '!model.serviceType'
-    },
-    {
       key: 'serviceUnits',
-      type: 'input',
+      type: 'select',
       templateOptions: {
-        label: 'Service Units',
+        label: 'Length',
         required: true,
-      }
-    },
-    {
-      key: 'what3words',
-      type: 'input',
-      templateOptions: {
-        placeholder: 'What 3 words address'
-      }
+        options: [
+          { value: 1, label: 'Inches' },
+          { value: 2, label: 'Millimeters' }
+        ]
+      },
+
     },
     {
       key: 'remote',
@@ -90,7 +136,7 @@ export class ServiceRegistrationComponent implements OnInit {
       }
     },
     {
-      key: 'coordinates',
+      key: 'businessAddress',
       type: 'input',
       templateOptions: {
         label: 'Business Address',
@@ -99,42 +145,54 @@ export class ServiceRegistrationComponent implements OnInit {
       hideExpression: '!model.remote'
     },
     {
+      key: 'serviceCallOutFee',
+      type: 'input',
+      templateOptions: {
+        label: 'Callout Fee',
+        placeholder: 'Price (ZAR)',
+        required: true,
+      },
+      hideExpression: '!model.remote'
+    },
+    {
+      key: 'maximumCallOutRadius',
+      type: 'input',
+      templateOptions: {
+        type: 'number',
+        label: 'Maximum Radius',
+        placeholder: 'Distance (km)',
+        required: true,
+      }
+    },
+    {
       key: 'myFAQ',
       type: 'faqs',
       templateOptions: {
-        addText: 'Add another investment',
+        addText: 'Add FAQ',
       },
       fieldArray: {
         fieldGroup: [
           {
             className: 'col-sm-4',
             type: 'input',
-            key: 'investmentName',
+            key: 'question',
             templateOptions: {
-              label: 'Name of Investment:',
+              label: 'Question:',
               required: true,
             },
           },
           {
             type: 'input',
-            key: 'investmentDate',
+            key: 'answer',
             className: 'col-sm-4',
             templateOptions: {
-              type: 'date',
-              label: 'Date of Investment:',
-            },
-          },
-          {
-            type: 'input',
-            key: 'stockIdentifier',
-            className: 'col-sm-4',
-            templateOptions: {
-              label: 'Stock Identifier:',
+              required: true,
+              label: 'Answer:',
             },
           },
         ],
       },
-    }
+    },
   ];
 
   onSubmit() {
