@@ -10,8 +10,10 @@ export class ServiceRegistrationComponent implements OnInit {
 
   constructor() { }
 
-
+// todo: solve for dynamic questions based on service name selected
+  
   // todo: write service to fetch look up values from the backend; update value on options
+    // https://www.google.com/search?q=formly+onchange&rlz=1C1GCEU_enZA874ZA874&oq=formly+onchange&aqs=chrome..69i57.3784j0j4&sourceid=chrome&ie=UTF-8
   // todo: asynch calls for the lookup options
   // todo: combo will be lookup using store id and services previously captured; field array
   
@@ -20,7 +22,7 @@ export class ServiceRegistrationComponent implements OnInit {
   }
   form = new FormGroup({});
   model = {
-    myFAQ: [{}]
+    faq: [{}]
   };
 
   fields: FormlyFieldConfig[] = [
