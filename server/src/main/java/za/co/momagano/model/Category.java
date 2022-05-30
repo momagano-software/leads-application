@@ -1,6 +1,7 @@
 package za.co.momagano.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Category extends KeyValue {
 
@@ -21,5 +22,18 @@ public class Category extends KeyValue {
 
     public void setSubCategoryList(List<SubCategory> subCategoryList) {
         this.subCategoryList = subCategoryList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return Objects.equals(subCategoryList, category.subCategoryList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(subCategoryList);
     }
 }

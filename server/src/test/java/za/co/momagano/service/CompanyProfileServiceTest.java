@@ -24,6 +24,7 @@ public class CompanyProfileServiceTest {
 
         verify(companyProfileRepository, times(1)).save(any(CompanyProfile.class));
     }
+
     @Test
     void shouldGetCompanyProfile(){
         String profileId = "1990/05/904329";

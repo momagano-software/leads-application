@@ -1,6 +1,7 @@
 package za.co.momagano.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SubCategory extends KeyValue {
 
@@ -17,5 +18,18 @@ public class SubCategory extends KeyValue {
 
     public void setServiceList(List<KeyValue> serviceList) {
         this.serviceList = serviceList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubCategory that = (SubCategory) o;
+        return Objects.equals(serviceList, that.serviceList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serviceList);
     }
 }

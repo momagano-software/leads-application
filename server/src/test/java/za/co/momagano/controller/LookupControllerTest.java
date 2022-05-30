@@ -8,14 +8,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import za.co.momagano.model.Category;
-import za.co.momagano.model.KeyValue;
+import za.co.momagano.LookupTestHelper;
 import za.co.momagano.model.LookupObject;
-import za.co.momagano.model.SubCategory;
 import za.co.momagano.service.LookupService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -32,7 +27,7 @@ public class LookupControllerTest {
     @Test
     public void shouldReturnLookups() throws Exception {
 
-        final LookupObject lookupObject = getLookupObject();
+        final LookupObject lookupObject = LookupTestHelper.getLookupObject();
 
         when(lookupService.getLookupObject()).thenReturn(lookupObject);
 
@@ -45,17 +40,6 @@ public class LookupControllerTest {
         verify(lookupService,times(1)).getLookupObject();
     }
 
-    private LookupObject getLookupObject() {
-        LookupObject lookupObject = new LookupObject();
-        List<Category> categoryList = new ArrayList<>();
-        List<SubCategory> subCategoryList = new ArrayList<>();
-        List<KeyValue> serviceList = new ArrayList<>();
-        serviceList.add(new KeyValue("Installation", "Installation"));
-        SubCategory subCategory = new SubCategory("Hairdressing", "Hairdressing", serviceList);
-        subCategoryList.add(subCategory);
-        Category category = new Category("Beauty", "Beauty", subCategoryList);
-        categoryList.add(category);
-        lookupObject.setCategoryList(categoryList);
-        return lookupObject;
-    }
+    //todo: crud endpoints
+
 }
