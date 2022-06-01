@@ -11,6 +11,8 @@ import za.co.momagano.repository.LookupRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
@@ -20,6 +22,7 @@ public class LookupServiceTest {
     LookupService lookupService;
     @MockBean
     private LookupRepository lookupRepository;
+
 
     @Test
     void shouldAddCategoryLookup() {
@@ -32,6 +35,21 @@ public class LookupServiceTest {
         LookupObject lookupObject = LookupTestHelper.getLookupObject();
         when(lookupRepository.findAll()).thenReturn(Arrays.asList(lookupObject));
 
+        lookupService.updateCategory(category);
+
+        verify(lookupRepository).findAll();
+        verify(lookupRepository).save(any(LookupObject.class));
+    }
+
+    @Test
+    void shouldCreateLookupObjectWhenNotReturnedFromRepository() {
+        Category category = LookupTestHelper
+                .getCategories(new ArrayList<>())
+                .get(0);
+
+        category.setName("NewName");
+
+        when(lookupRepository.findAll()).thenReturn(Collections.EMPTY_LIST);
 
         lookupService.updateCategory(category);
 

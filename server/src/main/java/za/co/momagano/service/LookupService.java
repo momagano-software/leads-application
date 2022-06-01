@@ -4,6 +4,7 @@ import za.co.momagano.model.Category;
 import za.co.momagano.model.LookupObject;
 import za.co.momagano.repository.LookupRepository;
 
+import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -24,10 +25,16 @@ public class LookupService {
     }
 
     public void updateCategory(Category category) {
-        LookupObject lookupObject = lookupRepository
-                .findAll()
-                .iterator()
-                .next();
+        LookupObject lookupObject;
+
+        try {
+            lookupObject = lookupRepository
+                    .findAll()
+                    .iterator()
+                    .next();
+        } catch (NoSuchElementException e) {
+            lookupObject = new LookupObject();
+        }
 
         AtomicBoolean isFound = new AtomicBoolean(false);
 
